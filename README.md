@@ -8,7 +8,7 @@
 
 <kbd>⌘</kbd> <kbd>Ctrl</kbd> <kbd>Option</kbd> <kbd>E</kbd>
 
-- Copies to the clipboard the text in Layers that matches a regular expression
+- Copies to the clipboard the text in Layers that match a regular expression
 - Operates on text Layers in the selection, or on all text Layers on the current page if the selection is empty
 
 Settings | Default
