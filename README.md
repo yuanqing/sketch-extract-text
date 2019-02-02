@@ -8,14 +8,13 @@
 
 <kbd>⌘</kbd> <kbd>Ctrl</kbd> <kbd>Option</kbd> <kbd>E</kbd>
 
-- Copies to the clipboard the text in layers that matches a regular expression
-- Runs on text Layers in the selection, or from all text Layers on the current page if the selection is empty
-- Leave the regular expression setting empty to match any text
+- Copies to the clipboard the text in Layers that matches a regular expression
+- Operates on text Layers in the selection, or on all text Layers on the current page if the selection is empty
 
 Settings | Default
 :--|:--
 Regular expression | `^Remark`
-Match layer name or layer content | Match layer content
+Match Layer name or Layer content | Match Layer content
 
 ## Installation
 
