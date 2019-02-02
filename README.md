@@ -9,6 +9,7 @@
 <kbd>⌘</kbd> <kbd>Ctrl</kbd> <kbd>Option</kbd> <kbd>E</kbd>
 
 - Copies to the clipboard the text in Layers that match a regular expression
+- Can be configured to match either the Layer name or the Layer content against the regular expression
 - Operates on text Layers in the selection, or on all text Layers on the current page if the selection is empty
 
 Settings | Default
