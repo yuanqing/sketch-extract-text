@@ -1,31 +1,31 @@
 {
+  "private": true,
+  "version": "0.2.0",
   "devDependencies": {
-    "chokidar-cli": "^1.2.1",
-    "prettier-standard": "^9.1.1",
-    "standard": "^12.0.1"
+    "sketch-plugin-helper": "*"
   },
   "scripts": {
-    "copy": "rm -rf ~/Library/Application\\ Support/com.bohemiancoding.sketch3/Plugins/Extract\\ Text.sketchplugin && cp -R ./Extract\\ Text.sketchplugin ~/Library/Application\\ Support/com.bohemiancoding.sketch3/Plugins",
-    "fix": "prettier-standard '*.sketchplugin/**/*.js'",
-    "lint": "standard '*.sketchplugin/**/*.js'",
-    "watch": "chokidar '*.sketchplugin/**/*' --command 'yarn copy' --initial"
+    "build": "sph build",
+    "fix": "sph lint --fix",
+    "lint": "sph lint",
+    "watch": "sph watch"
   },
-  "standard": {
-    "globals": [
-      "CGSizeMake",
-      "COSAlertWindow",
-      "NSButtonCell",
-      "NSRadioButton",
-      "NSMatrix",
-      "NSRadioModeMatrix",
-      "MSLayerGroup",
-      "NSMakeRect",
-      "NSPasteboard",
-      "NSStringPboardType",
-      "NSTextField",
-      "MSTextLayer",
-      "NSUserDefaults",
-      "NSView"
-    ]
+  "sketch-plugin-helper": {
+    "pluginName": "Extract Text",
+    "pluginDescription": "A Sketch plugin to extract text from Layers that match a regular expression",
+    "authorName": "Lim Yuan Qing",
+    "githubUserName": "yuanqing",
+    "githubRepositoryName": "sketch-extract-text",
+    "menu": [
+      {
+        "handler": "extract-text",
+        "label": "Extract Text",
+        "shortcut": "ctrl option cmd e"
+      }
+    ],
+    "defaultSettings": {
+      "matchType": "Match layer content",
+      "regularExpression": "^Remark"
+    }
   }
 }
