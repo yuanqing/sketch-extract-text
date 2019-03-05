@@ -1,6 +1,6 @@
 # sketch-extract-text
 
-> A Sketch plugin to extract text from Layers that match a regular expression
+> A Sketch plugin to extract text from layers that match a regular expression
 
 - Useful for extracting annotations from UX specifications
 
