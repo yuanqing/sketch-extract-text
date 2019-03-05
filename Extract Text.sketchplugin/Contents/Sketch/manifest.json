@@ -1,9 +1,9 @@
 {
   "name": "Extract Text",
-  "description": "A Sketch plugin to extract text from Layers that match a regular expression",
+  "description": "A Sketch plugin to extract text from layers that match a regular expression",
   "author": "Lim Yuan Qing",
   "homepage": "https://github.com/yuanqing/sketch-extract-text",
-  "version": "v0.2.0",
+  "version": "0.2.0",
   "identifier": "yuanqing.sketch-extract-text",
   "appcast": "https://raw.githubusercontent.com/yuanqing/sketch-extract-text/master/appcast.xml",
   "bundleVersion": 1,
@@ -12,7 +12,7 @@
     {
       "name": "Extract Text",
       "identifier": "yuanqing.sketch-extract-text.extract-text",
-      "script": "bundle.js",
+      "script": "plugin.js",
       "shortcut": "ctrl option cmd e",
       "handler": "extract-text"
     }
