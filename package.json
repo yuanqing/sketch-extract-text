@@ -10,6 +10,7 @@
     "link": "sph link",
     "lint": "sph lint",
     "unlink": "sph unlink",
+    "version": "sph version",
     "watch": "sph watch"
   },
   "sketch-plugin-helper": {
