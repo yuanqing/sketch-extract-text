@@ -3829,8 +3829,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-sketch-plugin-helper@/Users/yuanqing/Desktop/sketch-plugin-helper:
-  version "0.0.1"
+sketch-plugin-helper@*:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/sketch-plugin-helper/-/sketch-plugin-helper-0.0.3.tgz#3bf08964aedd491ced9ffb13086e1906d068269b"
+  integrity sha512-weZXqKVwMvhxN/Xj40uIF5wRwP9XJmLV8O2T5XM/m0/9DURV9m7MxeNUtAB1dqXT99E3iI8KsvwlMu15o4DwhQ==
   dependencies:
     brfs "^2.0.2"
     chokidar "^2.1.1"
