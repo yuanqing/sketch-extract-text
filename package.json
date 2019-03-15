@@ -7,7 +7,9 @@
   "scripts": {
     "build": "sph build",
     "fix": "sph lint --fix",
+    "link": "sph link",
     "lint": "sph lint",
+    "unlink": "sph unlink",
     "watch": "sph watch"
   },
   "sketch-plugin-helper": {
