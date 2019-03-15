@@ -1,8 +1,6 @@
 /* eslint-disable eqeqeq */
 
-const dom = require('sketch/dom')
-const ui = require('sketch/ui')
-const { openSettingsDialog, saveSettings } = require('sketch-plugin-helper')
+const { getAllLayers, getSelectedLayers, openSettingsDialog, saveSettings, showMessage } = require('sketch-plugin-helper')
 
 const filterTextLayersByRegularExpression = require('./filter-text-layers-by-regular-expression')
 const findAllTextLayers = require('./find-all-text-layers')
@@ -14,20 +12,18 @@ export default function () {
   if (settings) {
     saveSettings({ settings })
   }
-  const document = dom.getSelectedDocument()
-  const selectedLayers = document.selectedLayers
+  const selectedLayers = getSelectedLayers()
   let textLayers = []
-  if (selectedLayers.isEmpty) {
-    const page = document.selectedPage
-    textLayers = findAllTextLayers(page.layers)
+  if (selectedLayers.length == 0) {
+    textLayers = findAllTextLayers(getAllLayers())
     if (textLayers.length == 0) {
-      ui.message('No text layers on the page')
+      showMessage('No text layers on the page')
       return
     }
   } else {
-    textLayers = findAllTextLayers(selectedLayers.layers)
+    textLayers = findAllTextLayers(selectedLayers)
     if (textLayers.length == 0) {
-      ui.message('No text layers in selection')
+      showMessage('No text layers in selection')
       return
     }
   }
@@ -42,7 +38,7 @@ export default function () {
   })
   const matchesLength = matches.length
   if (matchesLength == 0) {
-    ui.message('No matches')
+    showMessage('No matches')
     return
   }
   const string = matches
@@ -52,7 +48,7 @@ export default function () {
     .reverse()
     .join('\n')
   saveToClipboard(string)
-  ui.message(
+  showMessage(
     `Copied ${matchesLength} match${
       matchesLength != 1 ? 'es' : ''
     } to clipboard`
