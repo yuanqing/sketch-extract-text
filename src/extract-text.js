@@ -1,6 +1,12 @@
 /* eslint-disable eqeqeq */
 
-const { getAllLayers, getSelectedLayers, openSettingsDialog, saveSettings, showMessage } = require('sketch-plugin-helper')
+const {
+  getAllLayers,
+  getSelectedLayers,
+  openSettingsDialog,
+  saveSettings,
+  showMessage
+} = require('sketch-plugin-helper')
 
 const filterTextLayersByRegularExpression = require('./filter-text-layers-by-regular-expression')
 const findAllTextLayers = require('./find-all-text-layers')
