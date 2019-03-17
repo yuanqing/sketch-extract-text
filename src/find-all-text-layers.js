@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-
 function findAllTextLayers (layers, result) {
   result = result || []
   layers.forEach(function (layer) {

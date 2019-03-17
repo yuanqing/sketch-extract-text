@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-
 function ensureStringEndsWithNewline (string) {
   return string.charAt(string.length - 1) != '\n' ? string + '\n' : string
 }

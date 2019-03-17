@@ -1,50 +1,66 @@
-/* eslint-disable eqeqeq */
-
 const {
   getAllLayers,
   getSelectedLayers,
-  openSettingsDialog,
-  saveSettings,
-  showMessage
+  openUserInputDialog,
+  saveUserInput,
+  showErrorMessage,
+  showSuccessMessage,
+  showWarningMessage,
+  TEXT_BOX,
+  RADIO_BUTTONS
 } = require('sketch-plugin-helper')
 
 const filterTextLayersByRegularExpression = require('./filter-text-layers-by-regular-expression')
 const findAllTextLayers = require('./find-all-text-layers')
 const saveToClipboard = require('./save-to-clipboard')
-const settingsConfig = require('./settings-config')
 
-export default function () {
-  const settings = openSettingsDialog(settingsConfig)
-  if (settings) {
-    saveSettings({ settings })
+const userInputConfig = {
+  title: 'Extract Text',
+  inputs: [
+    {
+      key: 'regularExpression',
+      label: 'Regular Expression',
+      type: TEXT_BOX
+    },
+    {
+      key: 'matchType',
+      type: RADIO_BUTTONS,
+      possibleValues: ['Match layer content', 'Match layer name']
+    }
+  ]
+}
+
+function extractText () {
+  const userInput = openUserInputDialog(userInputConfig)
+  if (userInput) {
+    saveUserInput(userInput)
   }
   const selectedLayers = getSelectedLayers()
   let textLayers = []
   if (selectedLayers.length == 0) {
     textLayers = findAllTextLayers(getAllLayers())
     if (textLayers.length == 0) {
-      showMessage('No text layers on the page')
+      showErrorMessage('No text layers on the page')
       return
     }
   } else {
     textLayers = findAllTextLayers(selectedLayers)
     if (textLayers.length == 0) {
-      showMessage('No text layers in selection')
+      showErrorMessage('No text layers in selection')
       return
     }
   }
-  const settingsRegularExpression = settings.regularExpression
   const regularExpression = new RegExp(
-    settingsRegularExpression == '' ? '^.+$' : settingsRegularExpression
+    userInput.regularExpression == '' ? '^.+$' : userInput.regularExpression
   )
   const matches = filterTextLayersByRegularExpression({
     textLayers,
     regularExpression,
-    shouldMatchTextLayerContent: settings.matchType == 'Match layer content'
+    shouldMatchTextLayerContent: userInput.matchType == 'Match layer content'
   })
   const matchesLength = matches.length
   if (matchesLength == 0) {
-    showMessage('No matches')
+    showWarningMessage('No matches')
     return
   }
   const string = matches
@@ -54,9 +70,11 @@ export default function () {
     .reverse()
     .join('\n')
   saveToClipboard(string)
-  showMessage(
+  showSuccessMessage(
     `Copied ${matchesLength} match${
       matchesLength != 1 ? 'es' : ''
     } to clipboard`
   )
 }
+
+module.exports = extractText

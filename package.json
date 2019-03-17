@@ -7,11 +7,11 @@
   "scripts": {
     "build": "sph build",
     "fix": "sph lint --fix",
-    "link": "sph link",
     "lint": "sph lint",
-    "unlink": "sph unlink",
+    "symlink": "sph symlink",
+    "unlink": "sph symlink --delete",
     "version": "sph version",
-    "watch": "sph watch"
+    "watch": "sph build --watch"
   },
   "sketch-plugin-helper": {
     "pluginName": "Extract Text",
@@ -26,7 +26,7 @@
         "shortcut": "ctrl option cmd e"
       }
     ],
-    "defaultSettings": {
+    "defaults": {
       "matchType": "Match layer content",
       "regularExpression": "^Remark"
     }

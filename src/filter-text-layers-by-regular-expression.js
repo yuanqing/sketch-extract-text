@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-
 function filterTextLayersByRegularExpression ({
   textLayers,
   regularExpression,

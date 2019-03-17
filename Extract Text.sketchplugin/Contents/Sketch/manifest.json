@@ -18,9 +18,9 @@
     }
   ],
   "menu": {
-    "title": "Extract Text",
     "items": [
       "yuanqing.sketch-extract-text.extract-text"
-    ]
+    ],
+    "isRoot": true
   }
 }
