@@ -1,4 +1,4 @@
-const {
+import {
   getAllLayers,
   getSelectedLayers,
   openUserInputDialog,
@@ -8,11 +8,11 @@ const {
   showWarningMessage,
   TEXT_BOX,
   RADIO_BUTTONS
-} = require('sketch-plugin-helper')
+} from 'sketch-plugin-helper'
 
-const filterTextLayersByRegularExpression = require('./filter-text-layers-by-regular-expression')
-const findAllTextLayers = require('./find-all-text-layers')
-const saveToClipboard = require('./save-to-clipboard')
+import filterTextLayersByRegularExpression from './filter-text-layers-by-regular-expression'
+import findAllTextLayers from './find-all-text-layers'
+import saveToClipboard from './save-to-clipboard'
 
 const userInputConfig = {
   title: 'Extract Text',
@@ -30,7 +30,7 @@ const userInputConfig = {
   ]
 }
 
-function extractText () {
+export default function extractText () {
   const userInput = openUserInputDialog(userInputConfig)
   if (userInput) {
     saveUserInput(userInput)
@@ -76,5 +76,3 @@ function extractText () {
     } to clipboard`
   )
 }
-
-module.exports = extractText

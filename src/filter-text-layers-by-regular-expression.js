@@ -1,4 +1,4 @@
-function filterTextLayersByRegularExpression ({
+export default function filterTextLayersByRegularExpression ({
   textLayers,
   regularExpression,
   shouldMatchTextLayerContent
@@ -17,5 +17,3 @@ function filterTextLayersByRegularExpression ({
     return false
   })
 }
-
-module.exports = filterTextLayersByRegularExpression

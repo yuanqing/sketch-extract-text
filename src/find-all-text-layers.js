@@ -1,4 +1,4 @@
-function findAllTextLayers (layers, result) {
+export default function findAllTextLayers (layers, result) {
   result = result || []
   layers.forEach(function (layer) {
     if (layer.type == 'Text') {
@@ -11,5 +11,3 @@ function findAllTextLayers (layers, result) {
   })
   return result
 }
-
-module.exports = findAllTextLayers
