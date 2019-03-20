@@ -6,6 +6,11 @@
     <description>A Sketch plugin to extract text from layers that match a regular expression</description>
     <language>en</language>
     <item>
+      <title>v0.3.0</title>
+      <description>0.3.0</description>
+      <enclosure url="https://github.com/yuanqing/sketch-extract-text/archive/v0.3.0.zip" sparkle:version="0.3.0"/>
+    </item>
+    <item>
       <title>v0.2.2</title>
       <description>0.2.2</description>
       <enclosure url="https://github.com/yuanqing/sketch-extract-text/archive/v0.2.2.zip" sparkle:version="0.2.2"/>
