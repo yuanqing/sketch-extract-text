@@ -7,7 +7,7 @@ export default function filterTextLayersByRegularExpression ({
     const textLayerContent = textLayer.text
     const textLayerName = textLayer.name
     if (
-      textLayerContent != '' &&
+      textLayerContent !== '' &&
       regularExpression.test(
         shouldMatchTextLayerContent ? textLayerContent : textLayerName
       )

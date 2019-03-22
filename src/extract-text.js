@@ -37,29 +37,29 @@ export default function extractText () {
   }
   const selectedLayers = getSelectedLayers()
   let textLayers = []
-  if (selectedLayers.length == 0) {
+  if (selectedLayers.length === 0) {
     textLayers = findAllTextLayers(getAllLayers())
-    if (textLayers.length == 0) {
+    if (textLayers.length === 0) {
       showErrorMessage('No text layers on the page')
       return
     }
   } else {
     textLayers = findAllTextLayers(selectedLayers)
-    if (textLayers.length == 0) {
+    if (textLayers.length === 0) {
       showErrorMessage('No text layers in selection')
       return
     }
   }
   const regularExpression = new RegExp(
-    userInput.regularExpression == '' ? '^.+$' : userInput.regularExpression
+    userInput.regularExpression === '' ? '^.+$' : userInput.regularExpression
   )
   const matches = filterTextLayersByRegularExpression({
     textLayers,
     regularExpression,
-    shouldMatchTextLayerContent: userInput.matchType == 'Match layer content'
+    shouldMatchTextLayerContent: userInput.matchType === 'Match layer content'
   })
   const matchesLength = matches.length
-  if (matchesLength == 0) {
+  if (matchesLength === 0) {
     showWarningMessage('No matches')
     return
   }
@@ -72,7 +72,7 @@ export default function extractText () {
   saveToClipboard(string)
   showSuccessMessage(
     `Copied ${matchesLength} match${
-      matchesLength != 1 ? 'es' : ''
+      matchesLength !== 1 ? 'es' : ''
     } to clipboard`
   )
 }
