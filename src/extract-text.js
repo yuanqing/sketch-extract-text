@@ -32,9 +32,10 @@ const userInputConfig = {
 
 export default function extractText () {
   const userInput = openUserInputDialog(userInputConfig)
-  if (userInput) {
-    saveUserInput(userInput)
+  if (!userInput) {
+    return
   }
+  saveUserInput(userInput)
   const selectedLayers = getSelectedLayers()
   let textLayers = []
   if (selectedLayers.length === 0) {
