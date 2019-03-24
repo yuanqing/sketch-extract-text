@@ -3,7 +3,7 @@
   "description": "A Sketch plugin to extract text from layers that match a regular expression",
   "author": "Lim Yuan Qing",
   "homepage": "https://github.com/yuanqing/sketch-extract-text",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "identifier": "yuanqing.sketch-extract-text",
   "appcast": "https://raw.githubusercontent.com/yuanqing/sketch-extract-text/master/appcast.xml",
   "bundleVersion": 1,
