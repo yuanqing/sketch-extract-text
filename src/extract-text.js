@@ -1,41 +1,41 @@
 import {
   getAllLayers,
   getSelectedLayers,
-  openUserInputDialog,
-  saveUserInput,
+  openSettingsDialog,
+  saveSettings,
   showErrorMessage,
   showSuccessMessage,
   showWarningMessage,
-  TEXT_BOX,
-  RADIO_BUTTONS
+  RADIO_BUTTONS,
+  TEXT_BOX
 } from 'sketch-plugin-helper'
 
 import filterTextLayersByRegularExpression from './filter-text-layers-by-regular-expression'
 import findAllTextLayers from './find-all-text-layers'
 import saveToClipboard from './save-to-clipboard'
 
-const userInputConfig = {
+const settingsConfig = {
   title: 'Extract Text',
   inputs: [
     {
+      type: TEXT_BOX,
       key: 'regularExpression',
-      label: 'Regular Expression',
-      type: TEXT_BOX
+      label: 'Regular Expression'
     },
     {
-      key: 'matchType',
       type: RADIO_BUTTONS,
+      key: 'matchType',
       possibleValues: ['Match layer content', 'Match layer name']
     }
   ]
 }
 
 export default function extractText () {
-  const userInput = openUserInputDialog(userInputConfig)
-  if (!userInput) {
+  const settings = openSettingsDialog(settingsConfig)
+  if (!settings) {
     return
   }
-  saveUserInput(userInput)
+  saveSettings(settings)
   const selectedLayers = getSelectedLayers()
   let textLayers = []
   if (selectedLayers.length === 0) {
@@ -52,12 +52,12 @@ export default function extractText () {
     }
   }
   const regularExpression = new RegExp(
-    userInput.regularExpression === '' ? '^.+$' : userInput.regularExpression
+    settings.regularExpression === '' ? '^.+$' : settings.regularExpression
   )
   const matches = filterTextLayersByRegularExpression({
     textLayers,
     regularExpression,
-    shouldMatchTextLayerContent: userInput.matchType === 'Match layer content'
+    shouldMatchLayerContent: settings.matchType === 'Match layer content'
   })
   const matchesLength = matches.length
   if (matchesLength === 0) {

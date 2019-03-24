@@ -22,11 +22,15 @@
     "menu": [
       {
         "handler": "extract-text",
-        "label": "Extract Text",
-        "shortcut": "ctrl option cmd e"
+        "label": "Extract Text"
+      },
+      "-",
+      {
+        "handler": "reset-settings",
+        "label": "Reset Settings"
       }
     ],
-    "defaults": {
+    "defaultSettings": {
       "matchType": "Match layer content",
       "regularExpression": "^Remark"
     }

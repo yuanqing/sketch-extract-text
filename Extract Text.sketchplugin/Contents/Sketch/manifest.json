@@ -13,14 +13,21 @@
       "name": "Extract Text",
       "identifier": "yuanqing.sketch-extract-text.extract-text",
       "script": "plugin.js",
-      "shortcut": "ctrl option cmd e",
       "handler": "extract-text"
+    },
+    {
+      "name": "Reset Settings",
+      "identifier": "yuanqing.sketch-extract-text.reset-settings",
+      "script": "plugin.js",
+      "handler": "reset-settings"
     }
   ],
   "menu": {
+    "title": "Extract Text",
     "items": [
-      "yuanqing.sketch-extract-text.extract-text"
-    ],
-    "isRoot": true
+      "yuanqing.sketch-extract-text.extract-text",
+      "-",
+      "yuanqing.sketch-extract-text.reset-settings"
+    ]
   }
 }

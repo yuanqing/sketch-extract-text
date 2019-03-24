@@ -1,19 +1,15 @@
 export default function filterTextLayersByRegularExpression ({
   textLayers,
   regularExpression,
-  shouldMatchTextLayerContent
+  shouldMatchLayerContent
 }) {
   return textLayers.filter(function (textLayer) {
-    const textLayerContent = textLayer.text
-    const textLayerName = textLayer.name
-    if (
-      textLayerContent !== '' &&
+    const layerContent = textLayer.text
+    return (
+      layerContent !== '' &&
       regularExpression.test(
-        shouldMatchTextLayerContent ? textLayerContent : textLayerName
+        shouldMatchLayerContent ? layerContent : textLayer.name
       )
-    ) {
-      return true
-    }
-    return false
+    )
   })
 }
