@@ -4,8 +4,8 @@ import {
   openSettingsDialog,
   saveSettings,
   showErrorMessage,
+  showMessage,
   showSuccessMessage,
-  showWarningMessage,
   RADIO_BUTTONS,
   TEXT_BOX
 } from 'sketch-plugin-helper'
@@ -61,7 +61,7 @@ export default function extractText () {
   })
   const matchesLength = matches.length
   if (matchesLength === 0) {
-    showWarningMessage('No matches')
+    showMessage('No matches')
     return
   }
   const string = matches
