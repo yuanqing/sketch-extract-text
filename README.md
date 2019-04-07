@@ -1,4 +1,4 @@
-# sketch-extract-text
+# Extract Text
 
 > A Sketch plugin to extract text from layers that match a regular expression
 
@@ -12,8 +12,8 @@
 
 ## Installation
 
-1. [Download and unzip the latest release.](https://github.com/yuanqing/sketch-extract-text/releases)
-2. Double-click `Extract Text.sketchplugin` to install.
+1. [Download and unzip the latest release](https://github.com/yuanqing/sketch-extract-text/releases)
+2. Double-click `Extract Text.sketchplugin` to install
 
 ## License
 
