@@ -1,5 +1,5 @@
 import {
-  getAllLayers,
+  getLayersOnCurrentPage,
   getSelectedLayers,
   openSettingsDialog,
   saveSettings,
@@ -39,7 +39,7 @@ export default function extractText () {
   const selectedLayers = getSelectedLayers()
   let textLayers = []
   if (selectedLayers.length === 0) {
-    textLayers = findAllTextLayers(getAllLayers())
+    textLayers = findAllTextLayers(getLayersOnCurrentPage())
     if (textLayers.length === 0) {
       showErrorMessage('No text layers on the page')
       return
