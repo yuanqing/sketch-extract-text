@@ -1,6 +1,15 @@
 {
-  "private": true,
+  "name": "sketch-extract-text",
   "version": "0.4.1",
+  "description": "A Sketch plugin to extract text from layers that match a regular expression",
+  "keywords": [
+    "plugin",
+    "sketch",
+    "sketch-plugin-helper"
+  ],
+  "license": "MIT",
+  "author": "Lim Yuan Qing",
+  "repository": "yuanqing/sketch-extract-text",
   "devDependencies": {
     "sketch-plugin-helper": "*"
   },
@@ -14,11 +23,7 @@
     "watch": "sph build --watch"
   },
   "sketch-plugin-helper": {
-    "pluginName": "Extract Text",
-    "pluginDescription": "A Sketch plugin to extract text from layers that match a regular expression",
-    "authorName": "Lim Yuan Qing",
-    "githubUserName": "yuanqing",
-    "githubRepositoryName": "sketch-extract-text",
+    "name": "Extract Text",
     "menu": [
       {
         "handler": "extract-text",
