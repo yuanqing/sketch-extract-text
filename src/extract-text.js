@@ -65,7 +65,11 @@ export default function extractText () {
         : getLayersOnAllPages()
     )
     if (textLayers.length === 0) {
-      showErrorMessage(`No text layers ${scope === 'Current page' ? 'on the current page' : 'in the document'}`)
+      showErrorMessage(
+        `No text layers ${
+          scope === 'Current page' ? 'on the current page' : 'in the document'
+        }`
+      )
       return
     }
   }
