@@ -1,4 +1,5 @@
 import {
+  getLayersOnAllPages,
   getLayersOnCurrentPage,
   getSelectedLayers,
   openSettingsDialog,
@@ -6,6 +7,7 @@ import {
   showErrorMessage,
   showMessage,
   showSuccessMessage,
+  DROP_DOWN,
   RADIO_BUTTONS,
   TEXT_BOX
 } from 'sketch-plugin-helper'
@@ -14,40 +16,56 @@ import filterTextLayersByRegularExpression from './filter-text-layers-by-regular
 import findAllTextLayers from './find-all-text-layers'
 import saveToClipboard from './save-to-clipboard'
 
-const settingsConfig = {
-  title: 'Extract Text',
-  inputs: [
-    {
-      type: TEXT_BOX,
-      key: 'regularExpression',
-      label: 'Regular Expression'
-    },
-    {
-      type: RADIO_BUTTONS,
-      key: 'matchType',
-      possibleValues: ['Match layer content', 'Match layer name']
-    }
-  ]
-}
-
 export default function extractText () {
-  const settings = openSettingsDialog(settingsConfig)
+  const selectedLayers = getSelectedLayers()
+  const hasSelection = selectedLayers.length !== 0
+  const settings = openSettingsDialog({
+    title: 'Extract Text',
+    inputs: [
+      {
+        type: TEXT_BOX,
+        key: 'regularExpression',
+        label: 'Regular Expression'
+      },
+      {
+        type: RADIO_BUTTONS,
+        key: 'matchType',
+        possibleValues: ['Match layer content', 'Match layer name']
+      },
+      {
+        type: DROP_DOWN,
+        key: 'scope',
+        label: 'Scope',
+        possibleValues: [
+          hasSelection && 'Selected layers',
+          'Current page',
+          'Entire document'
+        ].filter(Boolean),
+        value: hasSelection ? 'Selected layers' : null
+      }
+    ]
+  })
   if (!settings) {
     return
   }
-  saveSettings(settings)
-  const selectedLayers = getSelectedLayers()
+  const { scope, ...settingsWithoutScope } = settings
   let textLayers = []
-  if (selectedLayers.length === 0) {
-    textLayers = findAllTextLayers(getLayersOnCurrentPage())
-    if (textLayers.length === 0) {
-      showErrorMessage('No text layers on the page')
-      return
-    }
-  } else {
+  if (scope === 'Selected layers') {
+    saveSettings(settingsWithoutScope)
     textLayers = findAllTextLayers(selectedLayers)
     if (textLayers.length === 0) {
       showErrorMessage('No text layers in selection')
+      return
+    }
+  } else {
+    saveSettings(settings)
+    textLayers = findAllTextLayers(
+      scope === 'Current page'
+        ? getLayersOnCurrentPage()
+        : getLayersOnAllPages()
+    )
+    if (textLayers.length === 0) {
+      showErrorMessage(`No text layers ${scope === 'Current page' ? 'on the current page' : 'in the document'}`)
       return
     }
   }
@@ -74,6 +92,6 @@ export default function extractText () {
   showSuccessMessage(
     `Copied ${matchesLength} match${
       matchesLength !== 1 ? 'es' : ''
-    } to clipboard`
+    } to the clipboard`
   )
 }
