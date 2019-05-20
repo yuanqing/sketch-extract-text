@@ -21,7 +21,7 @@ export default function extractText () {
   const hasSelection = selectedLayers.length !== 0
   const settings = openSettingsDialog({
     title: 'Extract Text',
-    inputs: [
+    formFields: [
       {
         type: TEXT_BOX,
         key: 'regularExpression',
